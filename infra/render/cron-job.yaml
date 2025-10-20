@@ -1,0 +1,19 @@
+services:
+  - type: cron
+    name: market-data-snapshot
+    env: python
+    plan: starter
+    schedule: '*/15 * * * *'
+    buildCommand: pip install -r requirements.txt
+    startCommand: python pipeline/bin/fetch_market_data.py
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ALPHAVANTAGE_API_KEY
+        sync: false
+      - key: MARKET_SYMBOLS
+        value: AAPL,MSFT
+      - key: INTRADAY_INTERVAL
+        value: 5min

@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.py,cover
+
+# Environments
+.env
+.env.*
+.venv/
+venv/
+render-supabase-pipeline/
+
+# Dependency & tool caches
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db

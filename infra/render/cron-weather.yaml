@@ -1,0 +1,23 @@
+services:
+  - type: cron
+    name: weather-snapshot
+    env: python
+    plan: starter
+    schedule: '0 * * * *'
+    buildCommand: pip install -r requirements.txt
+    startCommand: python pipeline/bin/fetch_weather_data.py
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: OPENMETEO_LATITUDE
+        value: '48.8566'
+      - key: OPENMETEO_LONGITUDE
+        value: '2.3522'
+      - key: OPENMETEO_LOCATION
+        value: Paris-FR
+      - key: OPENMETEO_HOURLY_VARS
+        value: temperature_2m,relativehumidity_2m,windspeed_10m,precipitation
+      - key: OPENMETEO_TIMEOUT
+        value: '30'
